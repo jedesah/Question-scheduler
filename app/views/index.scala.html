@@ -1,0 +1,29 @@
+@(course: Course, questionForm: Form[String])
+
+@import helper._
+
+@main("course.title") {
+  <h1>@course.title</h1>
+  
+  <ul>
+    @course.questions.map { question =>
+      <li>
+	@question.workstationId
+	
+	@form(routes.Application.deleteQuestion(question.id)) {
+	  <input type="submit" value="Delete">
+	}
+      </li>
+    }
+  </ul>
+  
+  <h2>J'ai une question!</h2>
+  
+  @form(routes.Application.newQuestion) {
+     
+     @inputText(questionForm("workstationId"))
+     
+     <input type="submit" value="Create">
+     
+   } 
+}
