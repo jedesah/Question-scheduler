@@ -5,7 +5,7 @@ class Course(val title: String) {
   var questions: List[Question] = Nil
 
   def addQuestion(workstationId: String) = {
-    questions = Question(questionIdIndex.toString, workstationId) :: questions
+    questions = Question(questionIdIndex.toString, workstationId, false) :: questions
     questionIdIndex = questionIdIndex + 1
   }
   

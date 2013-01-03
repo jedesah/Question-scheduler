@@ -46,6 +46,15 @@ object Application extends Controller {
     Redirect(routes.Application.questions)
   }
 
+  def setQuestionAsAnswered(id: String) = Action {
+    try {
+      course.questions.find(_.id == id).get.answered = true
+      Redirect(routes.Application.questions)
+    } catch {
+      case e: NoSuchElementException => BadRequest("No questions with that id")
+    }
+  }
+
   def login = Action { implicit request =>
     Ok(views.html.login(loginForm, flash.get("errorMessage").getOrElse("")))
   }

@@ -1,3 +1,3 @@
 package models
 
-case class Question(id: String, workstationId: String)
+case class Question(id: String, var workstationId: String, var answered: Boolean)

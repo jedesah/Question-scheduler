@@ -19,11 +19,14 @@
   <ul>
     @course.questions.map { question =>
       <li>
-	@question.workstationId
+	@question.workstationId @if(question.answered) { (answered) }
 	
 	@form(routes.Application.deleteQuestion(question.id)) {
 	  <input type="submit" value="Delete">
 	}
+  @form(routes.Application.setQuestionAsAnswered(question.id)) {
+    <input type="submit" value="Mark as answered">
+  }
       </li>
     }
   </ul>
