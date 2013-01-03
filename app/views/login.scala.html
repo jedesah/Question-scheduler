@@ -1,0 +1,12 @@
+@(loginForm: Form[String], errorMessage: String)
+
+@import helper._
+
+@main("Login") {
+	<p>@errorMessage</p>
+
+	@form(routes.Application.loginPost) {
+		@inputText(loginForm("openid"))
+		<input type="submit" value="Login">
+	}
+}

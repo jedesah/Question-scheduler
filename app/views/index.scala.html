@@ -1,8 +1,19 @@
-@(course: Course, questionForm: Form[String])
+@(course: Course, questionForm: Form[String], email: Option[String])
 
 @import helper._
 
 @main("course.title") {
+  <header>
+    @email match {
+      case Some(email) => {
+        <span>@email</span> <a href="@routes.Application.logout">Logout</a>
+      }
+      case None        => {
+        <a href="@routes.Application.login">Login</a>
+      }
+    }
+  </header>
+
   <h1>@course.title</h1>
   
   <ul>
